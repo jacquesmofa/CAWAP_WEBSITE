@@ -2,7 +2,7 @@ name: Deploy React App to GitHub Pages
 on:
   push:
     branches:
-      - master # Change to 'master' if that is your main branch
+      - master # Using 'master' as confirmed by your previous logs
 
 jobs:
   build-and-deploy:
@@ -15,10 +15,12 @@ jobs:
         run: |
           npm install
           npm run build
+          # CRITICAL FIX LINE ADDED: Copies 404.html from root to the 'out' folder
+          cp 404.html out/ 
 
       - name: Deploy to GitHub Pages 🚀
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./out # This is the critical line!
-          publish_branch: gh-pages # This is the branch GitHub Pages will deploy from
+          publish_dir: ./out 
+          publish_branch: gh-pages
