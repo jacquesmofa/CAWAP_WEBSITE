@@ -1,4 +1,6 @@
 import ScrollReveal from '../../../components/effects/ScrollReveal';
+// CRITICAL FIX: Import the Link component for internal navigation
+import { Link } from 'react-router-dom'; 
 
 const ProgramsSection = () => {
   const programs = [
@@ -132,8 +134,9 @@ const ProgramsSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {programs.map((program, index) => (
             <ScrollReveal key={index} direction="fade" delay={index * 0.1}>
-              <a
-                href={program.link}
+              {/* FIX: Replaced <a> tag with <Link> component, and href with to */}
+              <Link
+                to={program.link}
                 className="elite-card bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 group cursor-pointer block h-full"
               >
                 <div className={`w-16 h-16 bg-gradient-to-br ${program.gradient} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
@@ -149,7 +152,7 @@ const ProgramsSection = () => {
                   Learn More
                   <i className="ri-arrow-right-line ml-2"></i>
                 </div>
-              </a>
+              </Link>
             </ScrollReveal>
           ))}
         </div>
