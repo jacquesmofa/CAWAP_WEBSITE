@@ -1,18 +1,25 @@
 import Header from '../../components/feature/Header';
 import Footer from '../../components/feature/Footer';
 import DonationCTA from '../../components/feature/DonationCTA';
+import ScrollReveal from '../../components/effects/ScrollReveal';
 
 const ChildrenSummerCampPage = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       <Header />
-      <main>
-        <section className="bg-primary text-white py-16">
-          <div className="container mx-auto px-4">
-            <h1 className="text-4xl md:text-5xl font-bold text-center">Children Summer Camp</h1>
-          </div>
-        </section>
 
+      {/* Hero Section */}
+      <section className="relative h-[500px] flex items-center justify-center overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: "url('https://readdy.ai/api/search-image?query=happy%20diverse%20children%20playing%20and%20learning%20at%20summer%20camp%20with%20bright%20smiles%20and%20joyful%20expressions%2C%20colorful%20outdoor%20activities%20with%20kids%20engaged%20in%20fun%20educational%20games%2C%20professional%20photography%20capturing%20childhood%20joy%20and%20friendship%2C%20african%20and%20caribbean%20children%20participating%20in%20creative%20activities%2C%20sunny%20warm%20atmosphere%20with%20natural%20lighting%2C%20modern%20camp%20facility%20representing%20growth%20learning%20and%20summer%20fun&width=1920&height=500&seq=summer-camp-hero&orientation=landscape')",
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/60"></div>
+      </section>
+
+      <main>
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">

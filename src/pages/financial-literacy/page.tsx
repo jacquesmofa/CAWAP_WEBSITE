@@ -1,18 +1,25 @@
 import Header from '../../components/feature/Header';
 import Footer from '../../components/feature/Footer';
 import DonationCTA from '../../components/feature/DonationCTA';
+import ScrollReveal from '../../components/effects/ScrollReveal';
 
 const FinancialLiteracyPage = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       <Header />
-      <main>
-        <section className="bg-primary text-white py-16">
-          <div className="container mx-auto px-4">
-            <h1 className="text-4xl md:text-5xl font-bold text-center">Financial Literacy</h1>
-          </div>
-        </section>
 
+      {/* Hero Section */}
+      <section className="relative h-[500px] flex items-center justify-center overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: "url('https://readdy.ai/api/search-image?query=diverse%20african%20and%20caribbean%20people%20attending%20financial%20literacy%20workshop%20learning%20about%20money%20management%20and%20budgeting%2C%20modern%20training%20room%20with%20professional%20instructor%20and%20engaged%20participants%2C%20professional%20photography%20showing%20education%20empowerment%20and%20financial%20planning%2C%20adults%20taking%20notes%20and%20using%20calculators%2C%20bright%20inspiring%20atmosphere%20with%20natural%20lighting%2C%20contemporary%20setting%20representing%20economic%20empowerment%20and%20financial%20independence&width=1920&height=500&seq=financial-literacy-hero&orientation=landscape')",
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/60"></div>
+      </section>
+
+      <main>
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">

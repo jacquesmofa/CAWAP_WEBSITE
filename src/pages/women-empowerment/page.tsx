@@ -1,18 +1,25 @@
 import Header from '../../components/feature/Header';
 import Footer from '../../components/feature/Footer';
 import DonationCTA from '../../components/feature/DonationCTA';
+import ScrollReveal from '../../components/effects/ScrollReveal';
 
 const WomenEmpowermentPage = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       <Header />
-      <main>
-        <section className="bg-primary text-white py-16">
-          <div className="container mx-auto px-4">
-            <h1 className="text-4xl md:text-5xl font-bold text-center">Women Empowerment</h1>
-          </div>
-        </section>
 
+      {/* Hero Section */}
+      <section className="relative h-[500px] flex items-center justify-center overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: "url('https://readdy.ai/api/search-image?query=confident%20empowered%20african%20and%20caribbean%20women%20in%20professional%20development%20workshop%20standing%20together%20with%20determination%2C%20modern%20training%20facility%20with%20inspiring%20atmosphere%2C%20professional%20photography%20capturing%20women%20empowerment%20and%20sisterhood%2C%20diverse%20women%20of%20various%20ages%20engaged%20in%20skill%20building%20activities%2C%20warm%20natural%20lighting%20representing%20strength%20growth%20and%20transformation%2C%20contemporary%20setting%20showing%20leadership%20and%20economic%20empowerment&width=1920&height=500&seq=women-empowerment-hero&orientation=landscape')",
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/60"></div>
+      </section>
+
+      <main>
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">

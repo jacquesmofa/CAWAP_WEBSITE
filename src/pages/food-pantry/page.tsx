@@ -1,18 +1,25 @@
 import Header from '../../components/feature/Header';
 import Footer from '../../components/feature/Footer';
 import DonationCTA from '../../components/feature/DonationCTA';
+import ScrollReveal from '../../components/effects/ScrollReveal';
 
 const FoodPantryPage = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       <Header />
-      <main>
-        <section className="bg-primary text-white py-16">
-          <div className="container mx-auto px-4">
-            <h1 className="text-4xl md:text-5xl font-bold text-center">Food Pantry</h1>
-          </div>
-        </section>
 
+      {/* Hero Section */}
+      <section className="relative h-[500px] flex items-center justify-center overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: "url('https://readdy.ai/api/search-image?query=community%20volunteers%20organizing%20fresh%20food%20donations%20and%20groceries%20in%20welcoming%20food%20pantry%2C%20bright%20clean%20organized%20space%20with%20shelves%20of%20nutritious%20food%20items%2C%20professional%20photography%20showing%20compassion%20and%20community%20support%2C%20diverse%20volunteers%20helping%20families%20with%20food%20assistance%2C%20warm%20natural%20lighting%20creating%20hopeful%20caring%20atmosphere%2C%20modern%20community%20center%20representing%20food%20security%20and%20dignity&width=1920&height=500&seq=food-pantry-hero&orientation=landscape')",
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/60"></div>
+      </section>
+
+      <main>
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">

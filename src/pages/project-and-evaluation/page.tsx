@@ -1,18 +1,25 @@
 import Header from '../../components/feature/Header';
 import Footer from '../../components/feature/Footer';
 import DonationCTA from '../../components/feature/DonationCTA';
+import ScrollReveal from '../../components/effects/ScrollReveal';
 
 const ProjectEvaluationPage = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       <Header />
-      <main>
-        <section className="bg-primary text-white py-16">
-          <div className="container mx-auto px-4">
-            <h1 className="text-4xl md:text-5xl font-bold text-center">Project and Evaluation</h1>
-          </div>
-        </section>
 
+      {/* Hero Section */}
+      <section className="relative h-[500px] flex items-center justify-center overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: "url('https://readdy.ai/api/search-image?query=professional%20team%20analyzing%20data%20and%20evaluating%20community%20program%20results%20with%20charts%20and%20reports%2C%20modern%20office%20setting%20with%20collaborative%20work%20environment%2C%20professional%20photography%20showing%20assessment%20planning%20and%20strategic%20development%2C%20diverse%20staff%20members%20reviewing%20project%20outcomes%20and%20metrics%2C%20bright%20natural%20lighting%20creating%20productive%20atmosphere%2C%20contemporary%20workspace%20representing%20accountability%20transparency%20and%20continuous%20improvement&width=1920&height=500&seq=project-evaluation-hero&orientation=landscape')",
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/60"></div>
+      </section>
+
+      <main>
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">

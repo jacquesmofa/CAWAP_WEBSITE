@@ -1,18 +1,25 @@
 import Header from '../../components/feature/Header';
 import Footer from '../../components/feature/Footer';
 import DonationCTA from '../../components/feature/DonationCTA';
+import ScrollReveal from '../../components/effects/ScrollReveal';
 
 const SankofaRoyaleAwardsPage = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       <Header />
-      <main>
-        <section className="bg-primary text-white py-16">
-          <div className="container mx-auto px-4">
-            <h1 className="text-4xl md:text-5xl font-bold text-center">Sankofa Royale Awards</h1>
-          </div>
-        </section>
 
+      {/* Hero Section */}
+      <section className="relative h-[500px] flex items-center justify-center overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: "url('https://readdy.ai/api/search-image?query=elegant%20awards%20ceremony%20gala%20event%20with%20african%20and%20caribbean%20cultural%20celebration%2C%20sophisticated%20ballroom%20setting%20with%20golden%20lighting%20and%20decorative%20elements%2C%20professional%20photography%20capturing%20achievement%20recognition%20and%20cultural%20pride%2C%20diverse%20community%20members%20in%20formal%20attire%20celebrating%20excellence%2C%20warm%20luxurious%20atmosphere%20with%20stage%20and%20awards%20presentation%2C%20contemporary%20venue%20representing%20honor%20tradition%20and%20community%20celebration&width=1920&height=500&seq=sankofa-awards-hero&orientation=landscape')",
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/60"></div>
+      </section>
+
+      <main>
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">

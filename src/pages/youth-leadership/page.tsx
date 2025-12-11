@@ -1,18 +1,25 @@
 import Header from '../../components/feature/Header';
 import Footer from '../../components/feature/Footer';
 import DonationCTA from '../../components/feature/DonationCTA';
+import ScrollReveal from '../../components/effects/ScrollReveal';
 
 const YouthLeadershipPage = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       <Header />
-      <main>
-        <section className="bg-primary text-white py-16">
-          <div className="container mx-auto px-4">
-            <h1 className="text-4xl md:text-5xl font-bold text-center">Youth Leadership Program</h1>
-          </div>
-        </section>
 
+      {/* Hero Section */}
+      <section className="relative h-[500px] flex items-center justify-center overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: "url('https://readdy.ai/api/search-image?query=diverse%20group%20of%20confident%20young%20african%20and%20caribbean%20teenagers%20in%20leadership%20training%20program%20showing%20determination%20and%20ambition%2C%20bright%20modern%20educational%20facility%20with%20inspiring%20atmosphere%2C%20professional%20photography%20capturing%20youth%20empowerment%20and%20mentorship%2C%20students%20engaged%20in%20collaborative%20learning%20activities%2C%20warm%20natural%20lighting%20representing%20hope%20growth%20and%20future%20success%2C%20contemporary%20setting%20with%20books%20and%20technology&width=1920&height=500&seq=youth-leadership-hero&orientation=landscape')",
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/60"></div>
+      </section>
+
+      <main>
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">

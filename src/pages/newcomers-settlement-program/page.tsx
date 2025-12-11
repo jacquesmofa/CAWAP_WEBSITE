@@ -1,18 +1,25 @@
 import Header from '../../components/feature/Header';
 import Footer from '../../components/feature/Footer';
 import DonationCTA from '../../components/feature/DonationCTA';
+import ScrollReveal from '../../components/effects/ScrollReveal';
 
-const NewcomersSettlementProgramPage = () => {
+const NewcomersSettlementPage = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       <Header />
-      <main>
-        <section className="bg-primary text-white py-16">
-          <div className="container mx-auto px-4">
-            <h1 className="text-4xl md:text-5xl font-bold text-center">Newcomer's Settlement Program</h1>
-          </div>
-        </section>
 
+      {/* Hero Section */}
+      <section className="relative h-[500px] flex items-center justify-center overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: "url('https://readdy.ai/api/search-image?query=welcoming%20diverse%20immigrant%20families%20receiving%20settlement%20support%20and%20guidance%20in%20community%20center%2C%20warm%20friendly%20atmosphere%20with%20staff%20helping%20newcomers%20with%20paperwork%20and%20resources%2C%20professional%20photography%20showing%20cultural%20integration%20and%20community%20support%2C%20african%20and%20caribbean%20newcomers%20learning%20about%20canadian%20life%2C%20bright%20hopeful%20lighting%20creating%20inclusive%20atmosphere%2C%20modern%20facility%20representing%20new%20beginnings%20opportunity%20and%20belonging&width=1920&height=500&seq=newcomers-settlement-hero&orientation=landscape')",
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/60"></div>
+      </section>
+
+      <main>
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
@@ -76,4 +83,4 @@ const NewcomersSettlementProgramPage = () => {
   );
 };
 
-export default NewcomersSettlementProgramPage;
+export default NewcomersSettlementPage;

@@ -1,18 +1,25 @@
 import Header from '../../components/feature/Header';
 import Footer from '../../components/feature/Footer';
 import DonationCTA from '../../components/feature/DonationCTA';
+import ScrollReveal from '../../components/effects/ScrollReveal';
 
 const NewBreedWomenPage = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       <Header />
-      <main>
-        <section className="bg-primary text-white py-16">
-          <div className="container mx-auto px-4">
-            <h1 className="text-4xl md:text-5xl font-bold text-center">New Breed Women of Substance</h1>
-          </div>
-        </section>
 
+      {/* Hero Section */}
+      <section className="relative h-[500px] flex items-center justify-center overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: "url('https://readdy.ai/api/search-image?query=powerful%20confident%20african%20and%20caribbean%20women%20leaders%20in%20professional%20business%20attire%20standing%20together%20with%20determination%2C%20modern%20corporate%20setting%20showing%20strength%20and%20leadership%2C%20professional%20photography%20capturing%20women%20empowerment%20and%20excellence%2C%20diverse%20successful%20women%20of%20substance%20representing%20achievement%20and%20transformation%2C%20warm%20inspiring%20lighting%20creating%20uplifting%20atmosphere%2C%20contemporary%20environment%20symbolizing%20new%20generation%20of%20empowered%20women&width=1920&height=500&seq=new-breed-women-hero&orientation=landscape')",
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/60"></div>
+      </section>
+
+      <main>
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">

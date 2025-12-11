@@ -16,9 +16,9 @@ const AboutSection = () => {
               <div className="relative">
                 <div className="absolute -inset-4 bg-gradient-to-r from-[#3c1053] to-[#c9b037] rounded-2xl opacity-20 blur-xl"></div>
                 <img
-                  src="https://www.cawap.ca/wp-content/uploads/2024/12/IMG_0004-scaled.jpg"
+                  src="https://readdy.ai/api/search-image?query=diverse%20group%20of%20african%20and%20caribbean%20women%20in%20professional%20community%20center%20setting%20working%20together%20on%20empowerment%20programs%2C%20warm%20welcoming%20atmosphere%20with%20natural%20lighting%2C%20modern%20facility%20showing%20collaboration%20and%20sisterhood%2C%20professional%20photography%20capturing%20unity%20cultural%20diversity%20and%20community%20support%2C%20women%20of%20different%20ages%20engaged%20in%20meaningful%20activities%2C%20bright%20inspiring%20environment&width=800&height=600&seq=about-cawap-community&orientation=landscape"
                   alt="CAWAP Community"
-                  className="relative rounded-2xl shadow-2xl w-full h-[500px] object-cover object-top elite-card"
+                  className="relative rounded-2xl shadow-2xl w-full h-[500px] object-cover object-center elite-card"
                 />
               </div>
             </ParallaxSection>

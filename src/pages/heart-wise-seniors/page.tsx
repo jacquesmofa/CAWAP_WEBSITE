@@ -1,18 +1,25 @@
 import Header from '../../components/feature/Header';
 import Footer from '../../components/feature/Footer';
 import DonationCTA from '../../components/feature/DonationCTA';
+import ScrollReveal from '../../components/effects/ScrollReveal';
 
 const HeartWiseSeniorsPage = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       <Header />
-      <main>
-        <section className="bg-primary text-white py-16">
-          <div className="container mx-auto px-4">
-            <h1 className="text-4xl md:text-5xl font-bold text-center">Heart-Wise Seniors</h1>
-          </div>
-        </section>
 
+      {/* Hero Section */}
+      <section className="relative h-[500px] flex items-center justify-center overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: "url('https://readdy.ai/api/search-image?query=happy%20elderly%20african%20and%20caribbean%20seniors%20enjoying%20community%20activities%20together%20with%20warm%20smiles%2C%20bright%20welcoming%20senior%20center%20with%20comfortable%20atmosphere%2C%20professional%20photography%20showing%20respect%20dignity%20and%20care%20for%20elders%2C%20diverse%20group%20of%20older%20adults%20engaged%20in%20social%20activities%2C%20natural%20warm%20lighting%20creating%20joyful%20uplifting%20mood%2C%20modern%20accessible%20facility%20representing%20community%20support%20and%20intergenerational%20connection&width=1920&height=500&seq=heart-wise-seniors-hero&orientation=landscape')",
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/60"></div>
+      </section>
+
+      <main>
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">

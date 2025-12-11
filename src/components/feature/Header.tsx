@@ -181,14 +181,12 @@ const Header = () => {
               </div>
 
               {/* Donate Button */}
-              <a
-                href="https://www.canadahelps.org/en/dn/19757"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-[#c9b037] text-white px-6 py-2 rounded-full font-semibold hover:bg-[#b39f2f] transition-all duration-300 elite-btn glow-effect whitespace-nowrap"
+              <Link
+                to="/donate"
+                className="bg-[#c9b037] text-white px-6 py-2 rounded-full font-semibold hover:bg-[#b39f2f] transition-all duration-300 whitespace-nowrap cursor-pointer shadow-lg"
               >
                 Donate
-              </a>
+              </Link>
             </div>
 
             {/* Mobile Menu Button */}
@@ -224,14 +222,12 @@ const Header = () => {
               <Link to="/contact" className="block py-2 text-gray-700 hover:text-secondary whitespace-nowrap">
                 Contact
               </Link>
-              <a
-                href="https://www.cawap.ca/donations/833/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block mt-4 bg-secondary text-white px-6 py-2 rounded-md text-sm font-medium hover:bg-opacity-90 transition-all whitespace-nowrap cursor-pointer"
+              <Link
+                to="/donate"
+                className="inline-block mt-4 bg-[#c9b037] text-white px-6 py-2 rounded-md text-sm font-medium hover:bg-[#b39f2f] transition-all whitespace-nowrap cursor-pointer"
               >
                 Donate
-              </a>
+              </Link>
             </div>
           </div>
         )}

@@ -103,17 +103,18 @@ const AboutPage = () => {
     <div className="min-h-screen page-transition">
       <Header />
       <main>
-        {/* Page Header */}
-        <section className="relative h-[400px] bg-gradient-to-r from-[#3c1053] to-[#5a1a7a] overflow-hidden">
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#c9b037] rounded-full blur-3xl"></div>
-            <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-white rounded-full blur-3xl"></div>
-          </div>
-          <div className="relative h-full flex items-center justify-center text-center px-4">
-            <div className="max-w-4xl">
-              <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">About CAWAP</h1>
-              <p className="text-xl text-white/90">Empowering Communities, Transforming Lives</p>
-            </div>
+        {/* Hero Section */}
+        <section className="relative h-[400px] flex items-center justify-center overflow-hidden">
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{
+              backgroundImage: "url('https://readdy.ai/api/search-image?query=diverse%20group%20of%20empowered%20african%20and%20caribbean%20women%20standing%20together%20in%20solidarity%20with%20confident%20smiles%2C%20professional%20community%20center%20setting%20with%20warm%20welcoming%20atmosphere%2C%20natural%20lighting%20creating%20inspiring%20uplifting%20mood%2C%20modern%20facility%20showing%20unity%20sisterhood%20and%20cultural%20diversity%2C%20women%20of%20various%20ages%20representing%20community%20strength%20and%20empowerment%2C%20bright%20colors%20symbolizing%20hope%20and%20transformation&width=1920&height=400&seq=about-hero&orientation=landscape')",
+            }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/60"></div>
+          <div className="relative z-10 text-center px-4">
+            <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">About CAWAP</h1>
+            <p className="text-xl text-white/90">Empowering Communities, Transforming Lives</p>
           </div>
         </section>
 
@@ -259,18 +260,16 @@ const AboutPage = () => {
             </ScrollReveal>
 
             {/* Founder Section */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
               <ScrollReveal direction="left">
-                <ParallaxSection speed={0.15}>
-                  <div className="relative">
-                    <div className="absolute -inset-4 bg-gradient-to-r from-[#c9b037] to-[#3c1053] rounded-2xl opacity-20 blur-xl"></div>
-                    <img
-                      src="https://www.cawap.ca/wp-content/uploads/2021/07/Rev-Irine.jpeg"
-                      alt="Rev. Irine Ashu PhD"
-                      className="relative w-full h-[600px] object-cover rounded-2xl shadow-2xl elite-card"
-                    />
-                  </div>
-                </ParallaxSection>
+                <div className="relative">
+                  <div className="absolute -inset-4 bg-gradient-to-r from-[#c9b037] to-[#3c1053] rounded-2xl opacity-20 blur-xl"></div>
+                  <img
+                    src="https://www.cawap.ca/wp-content/uploads/2021/07/Rev-Irine.jpeg"
+                    alt="Rev. Irine Ashu PhD"
+                    className="relative w-full h-[600px] object-cover rounded-2xl shadow-2xl elite-card"
+                  />
+                </div>
               </ScrollReveal>
 
               <ScrollReveal direction="right">

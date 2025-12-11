@@ -29,21 +29,23 @@ const ContactPage = () => {
   return (
     <div className="min-h-screen page-transition">
       <Header />
-      <main>
-        {/* Page Header */}
-        <section className="relative h-[400px] bg-gradient-to-r from-[#3c1053] to-[#5a1a7a] overflow-hidden">
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#c9b037] rounded-full blur-3xl"></div>
-            <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-white rounded-full blur-3xl"></div>
-          </div>
-          <div className="relative h-full flex items-center justify-center text-center px-4">
-            <div className="max-w-4xl">
-              <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">Contact Us</h1>
-              <p className="text-xl text-white/90">We'd Love to Hear From You</p>
-            </div>
-          </div>
-        </section>
 
+      {/* Hero Section */}
+      <section className="relative h-[400px] flex items-center justify-center overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: "url('https://readdy.ai/api/search-image?query=welcoming%20community%20center%20reception%20desk%20with%20friendly%20staff%20ready%20to%20help%2C%20bright%20modern%20office%20space%20with%20warm%20inviting%20atmosphere%2C%20professional%20photography%20showing%20accessibility%20and%20support%2C%20clean%20organized%20environment%20with%20natural%20lighting%2C%20diverse%20people%20communicating%20and%20connecting%2C%20contemporary%20design%20representing%20openness%20and%20community%20engagement&width=1920&height=400&seq=contact-hero&orientation=landscape')",
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/60"></div>
+        <div className="relative z-10 text-center px-4">
+          <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">Contact Us</h1>
+          <p className="text-xl text-white/90">We'd Love to Hear From You</p>
+        </div>
+      </section>
+
+      <main>
         {/* Contact Content */}
         <section className="py-20 bg-gradient-to-b from-white to-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

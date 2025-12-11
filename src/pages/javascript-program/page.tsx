@@ -1,18 +1,25 @@
 import Header from '../../components/feature/Header';
 import Footer from '../../components/feature/Footer';
 import DonationCTA from '../../components/feature/DonationCTA';
+import ScrollReveal from '../../components/effects/ScrollReveal';
 
 const JavascriptProgramPage = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       <Header />
-      <main>
-        <section className="bg-primary text-white py-16">
-          <div className="container mx-auto px-4">
-            <h1 className="text-4xl md:text-5xl font-bold text-center">JavaScript Program</h1>
-          </div>
-        </section>
 
+      {/* Hero Section */}
+      <section className="relative h-[500px] flex items-center justify-center overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: "url('https://readdy.ai/api/search-image?query=diverse%20students%20learning%20computer%20programming%20and%20coding%20on%20modern%20laptops%20in%20technology%20training%20center%2C%20bright%20contemporary%20classroom%20with%20multiple%20monitors%20showing%20code%2C%20professional%20photography%20capturing%20tech%20education%20and%20digital%20skills%20development%2C%20african%20and%20caribbean%20youth%20engaged%20in%20software%20development%20learning%2C%20inspiring%20atmosphere%20with%20natural%20lighting%2C%20modern%20facility%20representing%20career%20opportunities%20and%20innovation&width=1920&height=500&seq=javascript-program-hero&orientation=landscape')",
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/60"></div>
+      </section>
+
+      <main>
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
