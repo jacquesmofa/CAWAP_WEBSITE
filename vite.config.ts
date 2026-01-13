@@ -3,22 +3,9 @@ import react from "@vitejs/plugin-react-swc";
 import { resolve } from "node:path";
 import AutoImport from "unplugin-auto-import/vite";
 
-// 1. DEFINE YOUR REPOSITORY NAME HERE
-// This is the CRITICAL fix for GitHub Pages deployment.
-const REPO_NAME = 'CAWAP_WEBSITE'; 
-
-// 2. Determine the correct base path.
-// Use the custom BASE_PATH environment variable if available (e.g., for Netlify/custom CI), 
-// otherwise use the GitHub Pages path if you are building for deployment (Vite's default mode).
-const base = process.env.BASE_PATH 
-    ? process.env.BASE_PATH 
-    : process.env.NODE_ENV === 'production' 
-    ? `/${REPO_NAME}/` // Use /REPO_NAME/ in production build (GitHub Pages)
-    : '/'; // Use '/' in development
-
+const base = process.env.BASE_PATH || "/";
 const isPreview = process.env.IS_PREVIEW ? true : false;
-
-// https://vitejs.dev/config/
+// https://vite.dev/config/
 export default defineConfig({
   define: {
     __BASE_PATH__: JSON.stringify(base),
@@ -79,7 +66,7 @@ export default defineConfig({
       dts: true,
     }),
   ],
-  base, // Set the configured base path here
+  base,
   build: {
     sourcemap: true,
     outDir: "out",

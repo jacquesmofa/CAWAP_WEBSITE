@@ -74,6 +74,12 @@ const Header = () => {
               >
                 About
               </Link>
+              <Link
+                to="/food-pantry"
+                className="text-gray-700 hover:text-[#3c1053] font-medium transition-all duration-300 hover:scale-110 whitespace-nowrap"
+              >
+                Food Bank
+              </Link>
 
               {/* Programs Dropdown */}
               <div
@@ -209,6 +215,9 @@ const Header = () => {
               </Link>
               <Link to="/about" className="block py-2 text-gray-700 hover:text-secondary whitespace-nowrap">
                 About
+              </Link>
+              <Link to="/food-pantry" className="block py-2 text-gray-700 hover:text-secondary whitespace-nowrap">
+                Food Bank
               </Link>
               <Link to="/programs" className="block py-2 text-gray-700 hover:text-secondary whitespace-nowrap">
                 Programs
