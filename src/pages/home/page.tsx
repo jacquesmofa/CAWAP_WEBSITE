@@ -14,6 +14,52 @@ const HomePage = () => {
     <div className="min-h-screen bg-white">
       <Header />
       <HeroSlider />
+      
+      {/* Important Location Change Announcement */}
+      <section className="py-6 bg-gradient-to-r from-[#8e24aa] to-[#26194f] relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-1/4 w-32 h-32 bg-white rounded-full blur-2xl animate-pulse"></div>
+          <div className="absolute bottom-0 right-1/4 w-40 h-40 bg-white rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+        </div>
+        <div className="max-w-6xl mx-auto px-4 relative z-10">
+          <ScrollReveal>
+            <div className="flex flex-col md:flex-row items-center gap-6 bg-white/10 backdrop-blur-sm rounded-2xl p-6 md:p-8 border-2 border-white/30">
+              {/* Icon */}
+              <div className="flex-shrink-0 w-16 h-16 md:w-20 md:h-20 bg-white rounded-full flex items-center justify-center shadow-xl">
+                <i className="ri-map-pin-line text-[#8e24aa] text-3xl md:text-4xl"></i>
+              </div>
+              
+              {/* Content */}
+              <div className="flex-grow text-center md:text-left">
+                <div className="flex items-center gap-3 justify-center md:justify-start mb-3">
+                  <span className="bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
+                    Important Update
+                  </span>
+                  <i className="ri-notification-badge-line text-white text-xl animate-bounce"></i>
+                </div>
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
+                  We've Moved to a New Location!
+                </h3>
+                <p className="text-white/95 text-base md:text-lg leading-relaxed">
+                  Please note our <strong>new address</strong>: We have relocated from <span className="line-through opacity-75">101 West Drive, Unit C</span> to <strong className="text-yellow-300">101 West Drive, Unit 7</strong>. Same building, new unit! We look forward to welcoming you at our new location.
+                </p>
+              </div>
+              
+              {/* CTA Button */}
+              <div className="flex-shrink-0">
+                <a
+                  href="/contact"
+                  className="inline-flex items-center gap-2 bg-white text-[#26194f] px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 whitespace-nowrap cursor-pointer shadow-lg hover:shadow-xl"
+                >
+                  <i className="ri-map-pin-2-line"></i>
+                  <span className="text-sm md:text-base">Get Directions</span>
+                </a>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
       <AboutSection />
       <ProgramsSection />
       

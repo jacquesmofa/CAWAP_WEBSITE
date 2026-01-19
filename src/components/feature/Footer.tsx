@@ -1,4 +1,3 @@
-
 import ScrollReveal from '../effects/ScrollReveal';
 import { useEffect, useRef } from 'react';
 
@@ -199,18 +198,18 @@ const Footer = () => {
               <ul className="space-y-3 text-gray-300 text-sm">
                 <li className="flex items-start">
                   <i className="ri-map-pin-line text-[#c9b037] text-lg mr-2 mt-1"></i>
-                  <span>101 West Dr Unit C2<br />Brampton, ON L6T 2J6<br />Canada</span>
+                  <span>101 West Dr Unit 7<br />Brampton, ON L6T 2J6<br />Canada</span>
                 </li>
                 <li className="flex items-center">
                   <i className="ri-phone-line text-[#c9b037] text-lg mr-2"></i>
-                  <a href="tel:647-581-5901" className="hover:text-[#c9b037] transition-colors duration-300 cursor-pointer">
+                  <a href="tel:+16475815901" className="hover:text-[#c9b037] transition-colors duration-300 cursor-pointer">
                     647-581-5901
                   </a>
                 </li>
                 <li className="flex items-center">
                   <i className="ri-mail-line text-[#c9b037] text-lg mr-2"></i>
-                  <a href="mailto:info@cawap.ca" className="hover:text-[#c9b037] transition-colors duration-300 cursor-pointer">
-                    info@cawap.ca
+                  <a href="mailto:cawap2005@gmail.com" className="hover:text-[#c9b037] transition-colors duration-300 cursor-pointer">
+                    cawap2005@gmail.com
                   </a>
                 </li>
               </ul>

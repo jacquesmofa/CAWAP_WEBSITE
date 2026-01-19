@@ -396,7 +396,7 @@ const DonatePage = () => {
                       </p>
                       <div className="bg-gray-50 p-3 rounded-lg">
                         <p className="text-sm font-mono text-[#3c1053] font-semibold break-all">
-                          donations@cawap.org
+                          cawap2005@gmail.com
                         </p>
                       </div>
                     </div>

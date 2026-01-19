@@ -38,10 +38,10 @@ const ImageCarousel = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal direction="fade">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-[#3c1053] mb-4 gradient-text">
+            <h2 className="text-4xl md:text-5xl font-bold text-[#26194f] mb-4 gradient-text">
               Community in Action
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-[#3c1053] to-[#c9b037] mx-auto mb-4"></div>
+            <div className="w-24 h-1 bg-gradient-to-r from-[#26194f] to-[#c9b037] mx-auto mb-4"></div>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Witness the impact of our programs through moments captured in our community
             </p>
@@ -53,14 +53,16 @@ const ImageCarousel = () => {
             {images.map((image, index) => (
               <div
                 key={index}
-                className={`absolute inset-0 transition-all duration-700 ${
-                  index === currentIndex ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
+                className={`absolute inset-0 transition-opacity duration-700 ${
+                  index === currentIndex ? 'opacity-100' : 'opacity-0'
                 }`}
               >
                 <img
                   src={image}
                   alt={`Community moment ${index + 1}`}
-                  className="w-full h-full object-cover"
+                  className={`w-full h-full object-cover transition-transform duration-[4000ms] ease-out ${
+                    index === currentIndex ? 'scale-110' : 'scale-100'
+                  }`}
                 />
               </div>
             ))}

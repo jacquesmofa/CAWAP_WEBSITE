@@ -35,11 +35,13 @@ const HeroSlider = () => {
         <div
           key={index}
           className={`absolute inset-0 transition-all duration-1000 ${
-            index === currentSlide ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
+            index === currentSlide ? 'opacity-100' : 'opacity-0'
           }`}
         >
           <div
-            className="absolute inset-0 bg-cover bg-center"
+            className={`absolute inset-0 bg-cover bg-center transition-transform duration-[5000ms] ease-out ${
+              index === currentSlide ? 'scale-110' : 'scale-100'
+            }`}
             style={{ backgroundImage: `url(${slide.image})` }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/25 to-black/40" />

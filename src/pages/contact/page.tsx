@@ -67,7 +67,7 @@ const ContactPage = () => {
                       <div>
                         <h3 className="text-xl font-bold text-[#3c1053] mb-2">Address</h3>
                         <p className="text-gray-600 leading-relaxed">
-                          101 West Dr Unit C2<br />
+                          101 West Dr Unit 7<br />
                           Brampton, ON L6T 2J6<br />
                           Canada
                         </p>
@@ -81,7 +81,7 @@ const ContactPage = () => {
                       <div>
                         <h3 className="text-xl font-bold text-[#3c1053] mb-2">Phone</h3>
                         <a href="tel:+16475815901" className="text-gray-600 hover:text-[#c9b037] transition-colors text-lg">
-                          +1 (647) 581-5901
+                          647-581-5901
                         </a>
                       </div>
                     </div>
@@ -92,8 +92,8 @@ const ContactPage = () => {
                       </div>
                       <div>
                         <h3 className="text-xl font-bold text-[#3c1053] mb-2">Email</h3>
-                        <a href="mailto:info@cawap.ca" className="text-gray-600 hover:text-[#c9b037] transition-colors text-lg">
-                          info@cawap.ca
+                        <a href="mailto:cawap2005@gmail.com" className="text-gray-600 hover:text-[#c9b037] transition-colors text-lg">
+                          cawap2005@gmail.com
                         </a>
                       </div>
                     </div>

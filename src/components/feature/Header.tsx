@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProgramsOpen, setIsProgramsOpen] = useState(false);
   const [isEventsOpen, setIsEventsOpen] = useState(false);
-  const location = useLocation();
+  const [isMobileProgramsOpen, setIsMobileProgramsOpen] = useState(false);
+  const [isMobileEventsOpen, setIsMobileEventsOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,68 +18,71 @@ const Header = () => {
   }, []);
 
   useEffect(() => {
-    setIsMobileMenuOpen(false);
-    setIsProgramsOpen(false);
-    setIsEventsOpen(false);
-  }, [location]);
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isMobileMenuOpen]);
 
-  const isActive = (path: string) => location.pathname === path;
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+    setIsMobileProgramsOpen(false);
+    setIsMobileEventsOpen(false);
+  };
 
   return (
     <>
-      {/* Top Contact Bar */}
-      <div className="bg-[#3c1053] text-white py-2 text-sm transition-all duration-500">
-        <div className="container mx-auto px-4 flex justify-end items-center gap-4 text-sm">
-          <a href="tel:+16475815901" className="hover:text-secondary transition-colors whitespace-nowrap">
-            +1 (647) 581-5901
-          </a>
-          <span>|</span>
-          <a href="mailto:info@cawap.ca" className="hover:text-secondary transition-colors whitespace-nowrap">
-            info@cawap.ca
-          </a>
-          <button className="ml-2 hover:text-secondary transition-colors cursor-pointer" aria-label="Search">
-            <i className="fas fa-search"></i>
-          </button>
-        </div>
-      </div>
-
-      {/* Main Navigation */}
-      <nav
-        className={`bg-white shadow-md sticky top-0 z-50 transition-all duration-500 ${
-          isScrolled ? 'shadow-2xl backdrop-blur-sm bg-white/95' : ''
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+          isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
+        <nav className="w-full px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <Link to="/" className="flex items-center magnetic-btn">
-              <img
-                src="https://www.cawap.ca/wp-content/uploads/2020/12/CAWAP-LOGO-313x91.png"
-                alt="C.A.W.A.P"
-                className="h-12 md:h-16"
+            <a href="/" className="flex items-center gap-3 cursor-pointer z-50">
+              <img 
+                src="https://static.readdy.ai/image/2e117e8c7ffa34e61699363cecaf86d3/fd607243c457d167e4cccda900d6d448.jpeg" 
+                alt="CAWAP Logo" 
+                className="h-16 w-16 object-contain"
               />
-            </Link>
+              <div className="flex flex-col">
+                <span className={`text-2xl font-bold transition-colors ${isScrolled ? 'text-[#26194f]' : 'text-white'}`}>
+                  C.A.W.A.P
+                </span>
+                <span className={`text-xs transition-colors ${isScrolled ? 'text-gray-600' : 'text-white/90'}`}>
+                  Your Empowerment services
+                </span>
+              </div>
+            </a>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-8">
-              <Link
-                to="/"
-                className="text-gray-700 hover:text-[#3c1053] font-medium transition-all duration-300 hover:scale-110"
+            <div className="hidden lg:flex items-center gap-8">
+              <a
+                href="/"
+                className={`font-medium transition-colors cursor-pointer ${
+                  isScrolled ? 'text-gray-700 hover:text-[#26194f]' : 'text-white hover:text-[#c9b037]'
+                }`}
               >
                 Home
-              </Link>
-              <Link
-                to="/about"
-                className="text-gray-700 hover:text-[#3c1053] font-medium transition-all duration-300 hover:scale-110"
+              </a>
+              <a
+                href="/about"
+                className={`font-medium transition-colors cursor-pointer ${
+                  isScrolled ? 'text-gray-700 hover:text-[#26194f]' : 'text-white hover:text-[#c9b037]'
+                }`}
               >
                 About
-              </Link>
-              <Link
-                to="/food-pantry"
-                className="text-gray-700 hover:text-[#3c1053] font-medium transition-all duration-300 hover:scale-110 whitespace-nowrap"
+              </a>
+              <a
+                href="/food-pantry"
+                className={`font-medium transition-colors cursor-pointer ${
+                  isScrolled ? 'text-gray-700 hover:text-[#26194f]' : 'text-white hover:text-[#c9b037]'
+                }`}
               >
                 Food Bank
-              </Link>
+              </a>
 
               {/* Programs Dropdown */}
               <div
@@ -87,80 +90,78 @@ const Header = () => {
                 onMouseEnter={() => setIsProgramsOpen(true)}
                 onMouseLeave={() => setIsProgramsOpen(false)}
               >
-                <button className="text-gray-700 hover:text-[#3c1053] font-medium flex items-center transition-all duration-300 hover:scale-110 whitespace-nowrap">
+                <button
+                  className={`font-medium transition-colors flex items-center gap-1 cursor-pointer ${
+                    isScrolled ? 'text-gray-700 hover:text-[#26194f]' : 'text-white hover:text-[#c9b037]'
+                  }`}
+                >
                   Programs
-                  <i className="ri-arrow-down-s-line ml-1"></i>
+                  <i className={`ri-arrow-down-s-line transition-transform ${isProgramsOpen ? 'rotate-180' : ''}`}></i>
                 </button>
-
-                {/* Mega Menu - Aligned to the right edge */}
                 {isProgramsOpen && (
-                  <div className="absolute right-0 mt-2 w-[800px] bg-white rounded-lg shadow-2xl p-8 reveal reveal-fade reveal-visible border-t-4 border-[#c9b037]">
-                    <div className="grid grid-cols-3 gap-4">
-                      <div>
-                        <Link to="/youth-leadership" className="block py-2 text-sm text-gray-700 hover:text-secondary whitespace-nowrap">
-                          Youth Leadership
-                        </Link>
-                        <Link to="/capital-g-girls" className="block py-2 text-sm text-gray-700 hover:text-secondary whitespace-nowrap">
-                          Capital G-Girls
-                        </Link>
-                        <Link to="/heart-wise-seniors" className="block py-2 text-sm text-gray-700 hover:text-secondary whitespace-nowrap">
-                          Heart Wise Seniors
-                        </Link>
-                        <Link to="/women-empowerment" className="block py-2 text-sm text-gray-700 hover:text-secondary whitespace-nowrap">
-                          Women Empowerment
-                        </Link>
-                        <Link to="/sankofa-royale-awards" className="block py-2 text-sm text-gray-700 hover:text-secondary whitespace-nowrap">
-                          Sankofa Royale Awards
-                        </Link>
-                      </div>
-                      <div>
-                        <Link to="/food-pantry" className="block py-2 text-sm text-gray-700 hover:text-secondary whitespace-nowrap">
-                          Food Pantry
-                        </Link>
-                        <Link to="/financial-literacy" className="block py-2 text-sm text-gray-700 hover:text-secondary whitespace-nowrap">
-                          Financial Literacy
-                        </Link>
-                        <Link to="/javascript-program" className="block py-2 text-sm text-gray-700 hover:text-secondary whitespace-nowrap">
-                          JavaScript Program
-                        </Link>
-                        <Link to="/children-summer-camp" className="block py-2 text-sm text-gray-700 hover:text-secondary whitespace-nowrap">
-                          Children Summer Camp
-                        </Link>
-                        <Link to="/mental-health" className="block py-2 text-sm text-gray-700 hover:text-secondary whitespace-nowrap">
-                          Mental Health
-                        </Link>
-                      </div>
-                      <div>
-                        <Link to="/new-breed-women-of-substance" className="block py-2 text-sm text-gray-700 hover:text-secondary whitespace-nowrap">
-                          New Breed Women of Substance
-                        </Link>
-                        <Link to="/project-and-evaluation" className="block py-2 text-sm text-gray-700 hover:text-secondary whitespace-nowrap">
-                          Project and Evaluation
-                        </Link>
-                        <Link to="/newcomers-settlement-program" className="block py-2 text-sm text-gray-700 hover:text-secondary whitespace-nowrap">
-                          Newcomer's Settlement Program
-                        </Link>
-                        <Link to="/cultural-events" className="block py-2 text-sm text-gray-700 hover:text-secondary whitespace-nowrap">
-                          Cultural Events
-                        </Link>
-                      </div>
-                    </div>
+                  <div className="absolute top-full left-[-200px] mt-2 w-[720px] bg-white rounded-lg shadow-xl py-4 px-2 z-50 grid grid-cols-3 gap-x-2">
+                    <a href="/youth-leadership" className="block px-4 py-2 text-gray-700 hover:bg-[#26194f]/10 hover:text-[#26194f] transition-colors cursor-pointer rounded-md">
+                      Youth Leadership
+                    </a>
+                    <a href="/capital-g-girls" className="block px-4 py-2 text-gray-700 hover:bg-[#26194f]/10 hover:text-[#26194f] transition-colors cursor-pointer rounded-md">
+                      Capital G Girls
+                    </a>
+                    <a href="/heart-wise-seniors" className="block px-4 py-2 text-gray-700 hover:bg-[#26194f]/10 hover:text-[#26194f] transition-colors cursor-pointer rounded-md">
+                      Heart Wise Seniors
+                    </a>
+                    <a href="/women-empowerment" className="block px-4 py-2 text-gray-700 hover:bg-[#26194f]/10 hover:text-[#26194f] transition-colors cursor-pointer rounded-md">
+                      Women Empowerment
+                    </a>
+                    <a href="/sankofa-royale-awards" className="block px-4 py-2 text-gray-700 hover:bg-[#26194f]/10 hover:text-[#26194f] transition-colors cursor-pointer rounded-md">
+                      Sankofa Royale Awards
+                    </a>
+                    <a href="/food-pantry" className="block px-4 py-2 text-gray-700 hover:bg-[#26194f]/10 hover:text-[#26194f] transition-colors cursor-pointer rounded-md">
+                      Food Pantry
+                    </a>
+                    <a href="/financial-literacy" className="block px-4 py-2 text-gray-700 hover:bg-[#26194f]/10 hover:text-[#26194f] transition-colors cursor-pointer rounded-md">
+                      Financial Literacy
+                    </a>
+                    <a href="/javascript-program" className="block px-4 py-2 text-gray-700 hover:bg-[#26194f]/10 hover:text-[#26194f] transition-colors cursor-pointer rounded-md">
+                      Javascript Program
+                    </a>
+                    <a href="/children-summer-camp" className="block px-4 py-2 text-gray-700 hover:bg-[#26194f]/10 hover:text-[#26194f] transition-colors cursor-pointer rounded-md">
+                      Children Summer Camp
+                    </a>
+                    <a href="/mental-health" className="block px-4 py-2 text-gray-700 hover:bg-[#26194f]/10 hover:text-[#26194f] transition-colors cursor-pointer rounded-md">
+                      Mental Health
+                    </a>
+                    <a href="/new-breed-women-of-substance" className="block px-4 py-2 text-gray-700 hover:bg-[#26194f]/10 hover:text-[#26194f] transition-colors cursor-pointer rounded-md">
+                      New Breed Women
+                    </a>
+                    <a href="/project-and-evaluation" className="block px-4 py-2 text-gray-700 hover:bg-[#26194f]/10 hover:text-[#26194f] transition-colors cursor-pointer rounded-md">
+                      Project & Evaluation
+                    </a>
+                    <a href="/newcomers-settlement-program" className="block px-4 py-2 text-gray-700 hover:bg-[#26194f]/10 hover:text-[#26194f] transition-colors cursor-pointer rounded-md">
+                      Newcomers Settlement
+                    </a>
+                    <a href="/cultural-events" className="block px-4 py-2 text-gray-700 hover:bg-[#26194f]/10 hover:text-[#26194f] transition-colors cursor-pointer rounded-md">
+                      Cultural Events
+                    </a>
                   </div>
                 )}
               </div>
 
-              <Link
-                to="/gallery"
-                className="text-gray-700 hover:text-[#3c1053] font-medium transition-all duration-300 hover:scale-110"
+              <a
+                href="/gallery"
+                className={`font-medium transition-colors cursor-pointer ${
+                  isScrolled ? 'text-gray-700 hover:text-[#26194f]' : 'text-white hover:text-[#c9b037]'
+                }`}
               >
                 Gallery
-              </Link>
-              <Link
-                to="/contact"
-                className="text-gray-700 hover:text-[#3c1053] font-medium transition-all duration-300 hover:scale-110"
+              </a>
+              <a
+                href="/contact"
+                className={`font-medium transition-colors cursor-pointer ${
+                  isScrolled ? 'text-gray-700 hover:text-[#26194f]' : 'text-white hover:text-[#c9b037]'
+                }`}
               >
                 Contact
-              </Link>
+              </a>
 
               {/* Events Dropdown */}
               <div
@@ -168,79 +169,190 @@ const Header = () => {
                 onMouseEnter={() => setIsEventsOpen(true)}
                 onMouseLeave={() => setIsEventsOpen(false)}
               >
-                <button className="text-gray-700 hover:text-[#3c1053] font-medium flex items-center transition-all duration-300 hover:scale-110 whitespace-nowrap">
+                <button
+                  className={`font-medium transition-colors flex items-center gap-1 cursor-pointer ${
+                    isScrolled ? 'text-gray-700 hover:text-[#26194f]' : 'text-white hover:text-[#c9b037]'
+                  }`}
+                >
                   Events
-                  <i className="ri-arrow-down-s-line ml-1"></i>
+                  <i className={`ri-arrow-down-s-line transition-transform ${isEventsOpen ? 'rotate-180' : ''}`}></i>
                 </button>
-
-                {/* Events Dropdown Menu - Aligned to the right edge */}
                 {isEventsOpen && (
-                  <div className="absolute right-0 mt-2 w-64 bg-white rounded-lg shadow-2xl p-4 reveal reveal-fade reveal-visible border-t-4 border-[#c9b037]">
-                    <Link to="/upcoming-events" className="block py-2 text-sm text-gray-700 hover:text-secondary whitespace-nowrap">
+                  <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-xl py-2 z-50">
+                    <a href="/upcoming-events" className="block px-4 py-2 text-gray-700 hover:bg-[#26194f]/10 hover:text-[#26194f] transition-colors cursor-pointer">
                       Upcoming Events
-                    </Link>
-                    <Link to="/christmas-event" className="block py-2 text-sm text-gray-700 hover:text-secondary whitespace-nowrap">
-                      Christmas Events
-                    </Link>
+                    </a>
+                    <a href="/christmas-event" className="block px-4 py-2 text-gray-700 hover:bg-[#26194f]/10 hover:text-[#26194f] transition-colors cursor-pointer">
+                      Christmas Event
+                    </a>
                   </div>
                 )}
               </div>
 
-              {/* Donate Button */}
-              <Link
-                to="/donate"
-                className="bg-[#c9b037] text-white px-6 py-2 rounded-full font-semibold hover:bg-[#b39f2f] transition-all duration-300 whitespace-nowrap cursor-pointer shadow-lg"
+              <a
+                href="/donate"
+                className="bg-[#c9b037] text-white px-6 py-2 rounded-full font-semibold hover:bg-[#b39f2f] transition-all duration-300 elite-btn whitespace-nowrap cursor-pointer"
               >
-                Donate
-              </Link>
+                Donate Now
+              </a>
             </div>
 
             {/* Mobile Menu Button */}
             <button
-              className="lg:hidden text-gray-700 cursor-pointer"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label="Toggle menu"
+              onClick={toggleMobileMenu}
+              className="lg:hidden text-3xl z-50 w-12 h-12 flex items-center justify-center cursor-pointer"
             >
-              <i className={`fas ${isMobileMenuOpen ? 'fa-times' : 'fa-bars'} text-2xl`}></i>
+              <i className={`${isMobileMenuOpen ? 'ri-close-line' : 'ri-menu-line'} ${isScrolled ? 'text-[#26194f]' : 'text-white'}`}></i>
             </button>
           </div>
-        </div>
+        </nav>
+      </header>
 
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="lg:hidden bg-white border-t">
-            <div className="container mx-auto px-4 py-4">
-              <Link to="/" className="block py-2 text-gray-700 hover:text-secondary whitespace-nowrap">
-                Home
-              </Link>
-              <Link to="/about" className="block py-2 text-gray-700 hover:text-secondary whitespace-nowrap">
-                About
-              </Link>
-              <Link to="/food-pantry" className="block py-2 text-gray-700 hover:text-secondary whitespace-nowrap">
-                Food Bank
-              </Link>
-              <Link to="/programs" className="block py-2 text-gray-700 hover:text-secondary whitespace-nowrap">
-                Programs
-              </Link>
-              <Link to="/events" className="block py-2 text-gray-700 hover:text-secondary whitespace-nowrap">
-                Events
-              </Link>
-              <Link to="/gallery" className="block py-2 text-gray-700 hover:text-secondary whitespace-nowrap">
-                Gallery
-              </Link>
-              <Link to="/contact" className="block py-2 text-gray-700 hover:text-secondary whitespace-nowrap">
-                Contact
-              </Link>
-              <Link
-                to="/donate"
-                className="inline-block mt-4 bg-[#c9b037] text-white px-6 py-2 rounded-md text-sm font-medium hover:bg-[#b39f2f] transition-all whitespace-nowrap cursor-pointer"
+      {/* Mobile Menu Overlay */}
+      {isMobileMenuOpen && (
+        <div className="fixed inset-0 bg-white z-40 lg:hidden overflow-y-auto">
+          <div className="pt-24 px-6 pb-6">
+            {/* ... existing mobile menu content ... */}
+            <a
+              href="/"
+              onClick={toggleMobileMenu}
+              className="block py-3 text-gray-700 hover:text-[#26194f] font-medium border-b border-gray-200 cursor-pointer"
+            >
+              Home
+            </a>
+            <a
+              href="/about"
+              onClick={toggleMobileMenu}
+              className="block py-3 text-gray-700 hover:text-[#26194f] font-medium border-b border-gray-200 cursor-pointer"
+            >
+              About
+            </a>
+            <a
+              href="/food-pantry"
+              onClick={toggleMobileMenu}
+              className="block py-3 text-gray-700 hover:text-[#26194f] font-medium border-b border-gray-200 cursor-pointer"
+            >
+              Food Bank
+            </a>
+
+            {/* Mobile Programs Dropdown */}
+            <div className="border-b border-gray-200">
+              <button
+                onClick={() => setIsMobileProgramsOpen(!isMobileProgramsOpen)}
+                className="w-full flex items-center justify-between py-3 text-gray-700 hover:text-[#26194f] font-medium cursor-pointer"
               >
-                Donate
-              </Link>
+                Programs
+                <i className={`ri-arrow-down-s-line transition-transform ${isMobileProgramsOpen ? 'rotate-180' : ''}`}></i>
+              </button>
+              {isMobileProgramsOpen && (
+                <div className="pl-4 pb-2">
+                  {/* ... existing program links ... */}
+                  <a href="/youth-leadership" onClick={toggleMobileMenu} className="block py-2 text-gray-600 hover:text-[#26194f] cursor-pointer">
+                    Youth Leadership
+                  </a>
+                  <a href="/capital-g-girls" onClick={toggleMobileMenu} className="block py-2 text-gray-600 hover:text-[#26194f] cursor-pointer">
+                    Capital G Girls
+                  </a>
+                  <a href="/heart-wise-seniors" onClick={toggleMobileMenu} className="block py-2 text-gray-600 hover:text-[#26194f] cursor-pointer">
+                    Heart Wise Seniors
+                  </a>
+                  <a href="/women-empowerment" onClick={toggleMobileMenu} className="block py-2 text-gray-600 hover:text-[#26194f] cursor-pointer">
+                    Women Empowerment
+                  </a>
+                  <a href="/sankofa-royale-awards" onClick={toggleMobileMenu} className="block py-2 text-gray-600 hover:text-[#26194f] cursor-pointer">
+                    Sankofa Royale Awards
+                  </a>
+                  <a href="/food-pantry" onClick={toggleMobileMenu} className="block py-2 text-gray-600 hover:text-[#26194f] cursor-pointer">
+                    Food Pantry
+                  </a>
+                  <a href="/financial-literacy" onClick={toggleMobileMenu} className="block py-2 text-gray-600 hover:text-[#26194f] cursor-pointer">
+                    Financial Literacy
+                  </a>
+                  <a href="/javascript-program" onClick={toggleMobileMenu} className="block py-2 text-gray-600 hover:text-[#26194f] cursor-pointer">
+                    Javascript Program
+                  </a>
+                  <a href="/children-summer-camp" onClick={toggleMobileMenu} className="block py-2 text-gray-600 hover:text-[#26194f] cursor-pointer">
+                    Children Summer Camp
+                  </a>
+                  <a href="/mental-health" onClick={toggleMobileMenu} className="block py-2 text-gray-600 hover:text-[#26194f] cursor-pointer">
+                    Mental Health
+                  </a>
+                  <a href="/new-breed-women-of-substance" onClick={toggleMobileMenu} className="block py-2 text-gray-600 hover:text-[#26194f] cursor-pointer">
+                    New Breed Women
+                  </a>
+                  <a href="/project-and-evaluation" onClick={toggleMobileMenu} className="block py-2 text-gray-600 hover:text-[#26194f] cursor-pointer">
+                    Project & Evaluation
+                  </a>
+                  <a href="/newcomers-settlement-program" onClick={toggleMobileMenu} className="block py-2 text-gray-600 hover:text-[#26194f] cursor-pointer">
+                    Newcomers Settlement
+                  </a>
+                  <a href="/cultural-events" onClick={toggleMobileMenu} className="block py-2 text-gray-600 hover:text-[#26194f] cursor-pointer">
+                    Cultural Events
+                  </a>
+                </div>
+              )}
+            </div>
+
+            <a
+              href="/gallery"
+              onClick={toggleMobileMenu}
+              className="block py-3 text-gray-700 hover:text-[#26194f] font-medium border-b border-gray-200 cursor-pointer"
+            >
+              Gallery
+            </a>
+            <a
+              href="/contact"
+              onClick={toggleMobileMenu}
+              className="block py-3 text-gray-700 hover:text-[#26194f] font-medium border-b border-gray-200 cursor-pointer"
+            >
+              Contact
+            </a>
+
+            {/* Mobile Events Dropdown */}
+            <div className="border-b border-gray-200">
+              <button
+                onClick={() => setIsMobileEventsOpen(!isMobileEventsOpen)}
+                className="w-full flex items-center justify-between py-3 text-gray-700 hover:text-[#26194f] font-medium cursor-pointer"
+              >
+                Events
+                <i className={`ri-arrow-down-s-line transition-transform ${isMobileEventsOpen ? 'rotate-180' : ''}`}></i>
+              </button>
+              {isMobileEventsOpen && (
+                <div className="pl-4 pb-2">
+                  <a href="/upcoming-events" onClick={toggleMobileMenu} className="block py-2 text-gray-600 hover:text-[#26194f] cursor-pointer">
+                    Upcoming Events
+                  </a>
+                  <a href="/christmas-event" onClick={toggleMobileMenu} className="block py-2 text-gray-600 hover:text-[#26194f] cursor-pointer">
+                    Christmas Event
+                  </a>
+                </div>
+              )}
+            </div>
+
+            <a
+              href="/donate"
+              onClick={toggleMobileMenu}
+              className="block mt-4 text-center bg-[#c9b037] text-white px-6 py-3 rounded-full font-semibold cursor-pointer"
+            >
+              Donate Now
+            </a>
+
+            {/* Mobile Contact Info */}
+            <div className="mt-8 pt-6 border-t border-gray-200">
+              <div className="space-y-3">
+                <a href="tel:+16475815901" className="flex items-center gap-2 text-gray-600 hover:text-[#26194f] cursor-pointer">
+                  <i className="ri-phone-line"></i>
+                  <span className="text-sm">647-581-5901</span>
+                </a>
+                <a href="mailto:cawap2005@gmail.com" className="flex items-center gap-2 text-gray-600 hover:text-[#26194f] cursor-pointer">
+                  <i className="ri-mail-line"></i>
+                  <span>cawap2005@gmail.com</span>
+                </a>
+              </div>
             </div>
           </div>
-        )}
-      </nav>
+        </div>
+      )}
     </>
   );
 };
