@@ -3,7 +3,7 @@ name: Deploy CAWAP to HostGator
 on:
   push:
     branches:
-      - main  # This now matches your branch name perfectly
+      - main  # Matches your newly renamed branch
 
 jobs:
   build-and-deploy:
@@ -31,7 +31,5 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./out/
-          # Using './' because the cawap@cawap.ca account 
-          # is already locked to the cawap.ca folder.
           server-dir: ./
           dangerous-clean-slate: false
