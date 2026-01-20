@@ -3,7 +3,7 @@ name: Deploy CAWAP to Host-Gator
 on:
   push:
     branches:
-      - main  # This matches your actual branch name
+      - master  # This matches your actual branch name
 
 jobs:
   build-and-deploy:
