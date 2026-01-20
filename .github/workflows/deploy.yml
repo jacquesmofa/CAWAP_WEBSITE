@@ -1,4 +1,4 @@
-name: Deploy CAWAP to HostGator
+name: Deploy CAWAP to Host-Gator
 
 on:
   push:
