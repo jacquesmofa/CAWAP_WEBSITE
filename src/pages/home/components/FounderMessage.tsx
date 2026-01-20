@@ -26,11 +26,13 @@ const FounderMessage = () => {
             <div className="relative flex flex-col items-center">
               <div className="relative w-full max-w-md">
                 <div className="absolute -inset-4 bg-gradient-to-r from-[#3c1053] to-[#c9b037] rounded-2xl opacity-20 blur-xl"></div>
-                <img
-                  src="https://readdy.ai/api/search-image?query=professional%20portrait%20of%20confident%20african%20woman%20leader%20in%20business%20attire%20standing%20with%20warm%20smile%2C%20elegant%20professional%20headshot%20with%20soft%20lighting%20and%20neutral%20background%2C%20inspiring%20leadership%20presence%20showing%20wisdom%20compassion%20and%20determination%2C%20high%20quality%20studio%20photography%2C%20dignified%20pose%20representing%20community%20service%20and%20philanthropy&width=600&height=800&seq=founder-portrait&orientation=portrait"
-                  alt="Rev. Irine Ashu, PhD"
-                  className="relative rounded-2xl shadow-2xl w-full object-cover elite-card"
-                />
+                <div className="relative rounded-2xl shadow-2xl w-full overflow-hidden elite-card bg-gradient-to-br from-[#f5f5f5] to-[#e8e8e8]">
+                  <img
+                    src="https://static.readdy.ai/image/2e117e8c7ffa34e61699363cecaf86d3/09ff259e537d55e1e2f8dc14ff039c70.png"
+                    alt="Rev. Irine Ashu, PhD"
+                    className="w-full object-contain"
+                  />
+                </div>
               </div>
               <div className="mt-6 text-center">
                 <h3 className="text-2xl font-bold text-[#3c1053] mb-2">Rev Irine Ashu PhD</h3>

@@ -16,32 +16,47 @@ const HomePage = () => {
       <HeroSlider />
       
       {/* Important Location Change Announcement */}
-      <section className="py-6 bg-gradient-to-r from-[#8e24aa] to-[#26194f] relative overflow-hidden">
+      <section className="py-8 bg-gradient-to-r from-[#8e24aa] via-[#5e35b1] to-[#26194f] relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-1/4 w-32 h-32 bg-white rounded-full blur-2xl animate-pulse"></div>
           <div className="absolute bottom-0 right-1/4 w-40 h-40 bg-white rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute top-1/2 left-1/2 w-24 h-24 bg-yellow-300 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '0.5s' }}></div>
         </div>
         <div className="max-w-6xl mx-auto px-4 relative z-10">
           <ScrollReveal>
-            <div className="flex flex-col md:flex-row items-center gap-6 bg-white/10 backdrop-blur-sm rounded-2xl p-6 md:p-8 border-2 border-white/30">
-              {/* Icon */}
-              <div className="flex-shrink-0 w-16 h-16 md:w-20 md:h-20 bg-white rounded-full flex items-center justify-center shadow-xl">
-                <i className="ri-map-pin-line text-[#8e24aa] text-3xl md:text-4xl"></i>
+            <div className="flex flex-col md:flex-row items-center gap-6 bg-white/15 backdrop-blur-md rounded-2xl p-6 md:p-8 border-2 border-white/40 shadow-2xl">
+              {/* Animated Icon */}
+              <div className="flex-shrink-0 relative">
+                <div className="absolute inset-0 bg-yellow-300 rounded-full blur-xl animate-pulse"></div>
+                <div className="relative w-20 h-20 md:w-24 md:h-24 bg-gradient-to-br from-white to-yellow-100 rounded-full flex items-center justify-center shadow-2xl">
+                  <i className="ri-map-pin-line text-[#8e24aa] text-4xl md:text-5xl animate-bounce"></i>
+                </div>
               </div>
               
               {/* Content */}
               <div className="flex-grow text-center md:text-left">
-                <div className="flex items-center gap-3 justify-center md:justify-start mb-3">
-                  <span className="bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
-                    Important Update
+                <div className="flex items-center gap-3 justify-center md:justify-start mb-3 flex-wrap">
+                  <span className="bg-yellow-300 text-[#26194f] text-xs font-bold px-4 py-2 rounded-full uppercase tracking-wide shadow-lg animate-pulse">
+                    🎉 Exciting News!
                   </span>
-                  <i className="ri-notification-badge-line text-white text-xl animate-bounce"></i>
+                  <span className="bg-white/30 text-white text-xs font-bold px-3 py-2 rounded-full uppercase tracking-wide">
+                    Coming February 1st, 2026
+                  </span>
                 </div>
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
-                  We've Moved to a New Location!
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 drop-shadow-lg">
+                  We're Moving to a <span className="text-yellow-300">New Location!</span>
                 </h3>
-                <p className="text-white/95 text-base md:text-lg leading-relaxed">
-                  Please note our <strong>new address</strong>: We have relocated from <span className="line-through opacity-75">101 West Drive, Unit C</span> to <strong className="text-yellow-300">101 West Drive, Unit 7</strong>. Same building, new unit! We look forward to welcoming you at our new location.
+                <p className="text-white/95 text-base md:text-lg leading-relaxed mb-2">
+                  <strong className="text-yellow-300">Mark your calendars!</strong> Starting <strong className="text-yellow-300">February 1st, 2026</strong>, you'll find us at our brand new location:
+                </p>
+                <p className="text-white text-lg md:text-xl leading-relaxed">
+                  <span className="inline-block bg-white/20 px-4 py-2 rounded-lg backdrop-blur-sm">
+                    <i className="ri-map-pin-2-fill text-yellow-300 mr-2"></i>
+                    <strong className="text-yellow-300">101 West Drive, Unit 7</strong>
+                  </span>
+                </p>
+                <p className="text-white/90 text-sm md:text-base mt-3">
+                  Same building, exciting new unit! We can't wait to welcome you! 🌟
                 </p>
               </div>
               
@@ -49,9 +64,9 @@ const HomePage = () => {
               <div className="flex-shrink-0">
                 <a
                   href="/contact"
-                  className="inline-flex items-center gap-2 bg-white text-[#26194f] px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 whitespace-nowrap cursor-pointer shadow-lg hover:shadow-xl"
+                  className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-300 to-yellow-400 text-[#26194f] px-6 py-4 rounded-full font-bold hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300 whitespace-nowrap cursor-pointer shadow-2xl hover:shadow-yellow-300/50 hover:scale-105 transform"
                 >
-                  <i className="ri-map-pin-2-line"></i>
+                  <i className="ri-map-pin-2-line text-xl"></i>
                   <span className="text-sm md:text-base">Get Directions</span>
                 </a>
               </div>
