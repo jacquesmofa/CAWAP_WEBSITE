@@ -5,6 +5,9 @@ import ScrollReveal from '../../components/effects/ScrollReveal';
 
 const GalleryPage = () => {
   const [activeCategory, setActiveCategory] = useState('all');
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [expandedCategories, setExpandedCategories] = useState<string[]>(['all']);
 
   // Gallery categories - easily expandable
   const categories = [
@@ -17,9 +20,9 @@ const GalleryPage = () => {
     { id: 'workshops', name: 'Workshops & Training', icon: 'ri-book-open-line' },
   ];
 
-  // Gallery images with categories
+  // Gallery images with categories - RESTORED ORIGINAL IMAGES + NEW ONES
   const galleryImages = [
-    // Food Bank Events
+    // ORIGINAL IMAGES - Food Bank Events
     {
       url: 'https://readdy.ai/api/search-image?query=welcoming%20community%20food%20bank%20volunteers%20organizing%20fresh%20produce%20and%20groceries%20on%20shelves%2C%20diverse%20team%20working%20together%20in%20bright%20organized%20space%2C%20professional%20photography%20showing%20community%20service%20and%20food%20security%20support%2C%20warm%20lighting%20with%20abundant%20fresh%20vegetables%20and%20nutritious%20food%20items&width=600&height=400&seq=gallery-food-1&orientation=landscape',
       category: 'food-bank',
@@ -40,8 +43,18 @@ const GalleryPage = () => {
       category: 'food-bank',
       title: 'Community Food Drive'
     },
+    {
+      url: 'https://readdy.ai/api/search-image?query=food%20bank%20warehouse%20with%20shelves%20stocked%20full%20of%20nutritious%20groceries%20and%20canned%20goods%2C%20organized%20inventory%20system%20for%20community%20food%20assistance%2C%20professional%20photography%20showing%20food%20security%20infrastructure%2C%20bright%20warehouse%20with%20volunteers%20managing%20food%20supplies&width=600&height=400&seq=gallery-food-5&orientation=landscape',
+      category: 'food-bank',
+      title: 'Food Bank Warehouse'
+    },
+    {
+      url: 'https://readdy.ai/api/search-image?query=volunteers%20loading%20food%20boxes%20into%20delivery%20van%20for%20home%20delivery%20service%2C%20community%20food%20bank%20outreach%20program%20bringing%20groceries%20to%20seniors%2C%20professional%20photography%20showing%20mobile%20food%20assistance%2C%20bright%20outdoor%20scene%20with%20volunteers%20carrying%20food%20boxes&width=600&height=400&seq=gallery-food-6&orientation=landscape',
+      category: 'food-bank',
+      title: 'Food Delivery Service'
+    },
 
-    // Community Programs
+    // ORIGINAL IMAGES - Community Programs
     {
       url: 'https://readdy.ai/api/search-image?query=diverse%20community%20members%20gathered%20for%20empowerment%20workshop%20in%20bright%20modern%20space%2C%20women%20and%20youth%20engaged%20in%20learning%20and%20discussion%2C%20professional%20photography%20showing%20community%20development%20and%20unity%2C%20warm%20atmosphere%20with%20people%20sitting%20in%20circle%20sharing%20ideas&width=600&height=400&seq=gallery-community-1&orientation=landscape',
       category: 'community',
@@ -62,8 +75,18 @@ const GalleryPage = () => {
       category: 'community',
       title: 'Community Cleanup Day'
     },
+    {
+      url: 'https://readdy.ai/api/search-image?query=community%20potluck%20dinner%20with%20diverse%20families%20sharing%20homemade%20dishes%20and%20cultural%20foods%2C%20warm%20gathering%20with%20people%20enjoying%20meals%20together%2C%20professional%20photography%20showing%20community%20bonding%20and%20cultural%20exchange%2C%20bright%20dining%20hall%20with%20tables%20full%20of%20diverse%20cuisine&width=600&height=400&seq=gallery-community-5&orientation=landscape',
+      category: 'community',
+      title: 'Community Potluck'
+    },
+    {
+      url: 'https://readdy.ai/api/search-image?query=newcomers%20welcome%20orientation%20with%20diverse%20immigrants%20learning%20about%20canadian%20community%20services%2C%20supportive%20environment%20with%20settlement%20workers%20assisting%20new%20residents%2C%20professional%20photography%20showing%20immigrant%20support%20and%20integration%2C%20bright%20welcoming%20space%20with%20informational%20displays&width=600&height=400&seq=gallery-community-6&orientation=landscape',
+      category: 'community',
+      title: 'Newcomers Welcome Event'
+    },
 
-    // Youth Activities
+    // ORIGINAL IMAGES - Youth Activities
     {
       url: 'https://readdy.ai/api/search-image?query=enthusiastic%20youth%20participants%20in%20leadership%20training%20program%2C%20diverse%20teenagers%20engaged%20in%20team%20building%20activities%20and%20discussions%2C%20professional%20photography%20showing%20youth%20empowerment%20and%20skill%20development%2C%20bright%20modern%20classroom%20with%20interactive%20learning%20environment&width=600&height=400&seq=gallery-youth-1&orientation=landscape',
       category: 'youth',
@@ -84,8 +107,18 @@ const GalleryPage = () => {
       category: 'youth',
       title: 'Mentorship Program'
     },
+    {
+      url: 'https://readdy.ai/api/search-image?query=diverse%20youth%20volunteering%20at%20community%20service%20project%2C%20teenagers%20working%20together%20on%20charity%20initiative%20and%20helping%20others%2C%20professional%20photography%20showing%20youth%20civic%20engagement%20and%20social%20responsibility%2C%20bright%20outdoor%20scene%20with%20young%20volunteers%20in%20action&width=600&height=400&seq=gallery-youth-5&orientation=landscape',
+      category: 'youth',
+      title: 'Youth Volunteer Day'
+    },
+    {
+      url: 'https://readdy.ai/api/search-image?query=teenage%20girls%20participating%20in%20capital%20g%20girls%20empowerment%20program%2C%20young%20women%20learning%20leadership%20and%20confidence%20skills%2C%20professional%20photography%20showing%20girls%20empowerment%20and%20personal%20development%2C%20bright%20modern%20space%20with%20engaged%20female%20youth%20participants&width=600&height=400&seq=gallery-youth-6&orientation=landscape',
+      category: 'youth',
+      title: 'Capital G Girls Program'
+    },
 
-    // Awards & Ceremonies
+    // ORIGINAL IMAGES - Awards & Ceremonies
     {
       url: 'https://readdy.ai/api/search-image?query=elegant%20awards%20ceremony%20with%20honored%20community%20leaders%20receiving%20recognition%2C%20formally%20dressed%20attendees%20at%20gala%20event%20celebrating%20achievements%2C%20professional%20photography%20showing%20prestigious%20award%20presentation%2C%20sophisticated%20indoor%20venue%20with%20stage%20lighting%20and%20proud%20award%20recipients&width=600&height=400&seq=gallery-awards-1&orientation=landscape',
       category: 'awards',
@@ -106,8 +139,13 @@ const GalleryPage = () => {
       category: 'awards',
       title: 'Annual Gala'
     },
+    {
+      url: 'https://readdy.ai/api/search-image?query=award%20ceremony%20stage%20with%20trophy%20and%20certificate%20presentation%20to%20community%20champion%2C%20spotlit%20stage%20with%20presenter%20handing%20award%20to%20honoree%2C%20professional%20photography%20showing%20moment%20of%20recognition%2C%20elegant%20venue%20with%20audience%20applauding%20achievement&width=600&height=400&seq=gallery-awards-5&orientation=landscape',
+      category: 'awards',
+      title: 'Award Presentation Moment'
+    },
 
-    // Cultural Events
+    // ORIGINAL IMAGES - Cultural Events
     {
       url: 'https://readdy.ai/api/search-image?query=vibrant%20african%20cultural%20festival%20with%20traditional%20dancers%20in%20colorful%20costumes%20performing%2C%20energetic%20cultural%20celebration%20with%20drummers%20and%20performers%2C%20professional%20photography%20capturing%20african%20heritage%20and%20traditions%2C%20outdoor%20festival%20with%20enthusiastic%20audience%20watching%20performance&width=600&height=400&seq=gallery-cultural-1&orientation=landscape',
       category: 'cultural',
@@ -128,8 +166,18 @@ const GalleryPage = () => {
       category: 'cultural',
       title: 'Heritage Celebration'
     },
+    {
+      url: 'https://readdy.ai/api/search-image?query=traditional%20clothing%20fashion%20show%20with%20models%20wearing%20colorful%20african%20attire%20and%20cultural%20garments%2C%20vibrant%20cultural%20fashion%20display%20celebrating%20heritage%2C%20professional%20photography%20showing%20traditional%20textiles%20and%20designs%2C%20indoor%20runway%20with%20audience%20admiring%20cultural%20fashion&width=600&height=400&seq=gallery-cultural-5&orientation=landscape',
+      category: 'cultural',
+      title: 'Cultural Fashion Show'
+    },
+    {
+      url: 'https://readdy.ai/api/search-image?query=cultural%20storytelling%20session%20with%20elder%20sharing%20traditional%20stories%20to%20engaged%20audience%2C%20intergenerational%20cultural%20knowledge%20transfer%20event%2C%20professional%20photography%20showing%20oral%20history%20preservation%2C%20warm%20indoor%20space%20with%20diverse%20listeners%20captivated%20by%20storyteller&width=600&height=400&seq=gallery-cultural-6&orientation=landscape',
+      category: 'cultural',
+      title: 'Storytelling Session'
+    },
 
-    // Workshops & Training
+    // ORIGINAL IMAGES - Workshops & Training
     {
       url: 'https://readdy.ai/api/search-image?query=financial%20literacy%20workshop%20with%20instructor%20teaching%20budgeting%20skills%20to%20diverse%20adults%2C%20engaged%20participants%20learning%20money%20management%20in%20classroom%2C%20professional%20photography%20showing%20financial%20education%20and%20empowerment%2C%20bright%20modern%20training%20room%20with%20presentation%20and%20interactive%20learning&width=600&height=400&seq=gallery-workshop-1&orientation=landscape',
       category: 'workshops',
@@ -150,12 +198,73 @@ const GalleryPage = () => {
       category: 'workshops',
       title: 'Job Readiness Training'
     },
+    {
+      url: 'https://readdy.ai/api/search-image?query=computer%20skills%20training%20class%20with%20seniors%20learning%20technology%2C%20elderly%20adults%20using%20computers%20with%20patient%20instructor%20assistance%2C%20professional%20photography%20showing%20digital%20literacy%20education%20for%20older%20adults%2C%20bright%20computer%20lab%20with%20engaged%20senior%20learners&width=600&height=400&seq=gallery-workshop-5&orientation=landscape',
+      category: 'workshops',
+      title: 'Digital Literacy for Seniors'
+    },
+    {
+      url: 'https://readdy.ai/api/search-image?query=parenting%20skills%20workshop%20with%20diverse%20parents%20learning%20child%20development%20strategies%2C%20supportive%20parent%20education%20session%20with%20facilitator%2C%20professional%20photography%20showing%20family%20support%20services%2C%20comfortable%20meeting%20room%20with%20parents%20engaged%20in%20discussion&width=600&height=400&seq=gallery-workshop-6&orientation=landscape',
+      category: 'workshops',
+      title: 'Parenting Workshop'
+    },
   ];
 
   // Filter images based on active category
   const filteredImages = activeCategory === 'all' 
     ? galleryImages 
     : galleryImages.filter(img => img.category === activeCategory);
+
+  // Toggle category expansion
+  const toggleCategory = (categoryId: string) => {
+    setExpandedCategories(prev => 
+      prev.includes(categoryId) 
+        ? prev.filter(id => id !== categoryId)
+        : [...prev, categoryId]
+    );
+  };
+
+  // Open lightbox
+  const openLightbox = (index: number) => {
+    setCurrentImageIndex(index);
+    setLightboxOpen(true);
+    document.body.style.overflow = 'hidden';
+  };
+
+  // Close lightbox
+  const closeLightbox = () => {
+    setLightboxOpen(false);
+    document.body.style.overflow = 'auto';
+  };
+
+  // Navigate to next image
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % filteredImages.length);
+  };
+
+  // Navigate to previous image
+  const previousImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + filteredImages.length) % filteredImages.length);
+  };
+
+  // Keyboard navigation
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'ArrowRight') nextImage();
+    if (e.key === 'ArrowLeft') previousImage();
+    if (e.key === 'Escape') closeLightbox();
+  };
+
+  // Get images to display (limited or all based on expansion)
+  const getDisplayImages = () => {
+    const INITIAL_DISPLAY = 8;
+    if (expandedCategories.includes(activeCategory)) {
+      return filteredImages;
+    }
+    return filteredImages.slice(0, INITIAL_DISPLAY);
+  };
+
+  const displayImages = getDisplayImages();
+  const hasMore = filteredImages.length > displayImages.length;
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
@@ -211,9 +320,12 @@ const GalleryPage = () => {
       <section className="py-16 bg-gradient-to-b from-white to-gray-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {filteredImages.map((image, index) => (
+            {displayImages.map((image, index) => (
               <ScrollReveal key={`${image.category}-${index}`} delay={index * 0.05}>
-                <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer">
+                <div 
+                  className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer"
+                  onClick={() => openLightbox(index)}
+                >
                   <div className="aspect-[3/2] w-full h-full overflow-hidden">
                     <img
                       src={image.url}
@@ -235,6 +347,23 @@ const GalleryPage = () => {
             ))}
           </div>
 
+          {/* Load More / Show Less Button */}
+          {filteredImages.length > 8 && (
+            <div className="text-center mt-12">
+              <button
+                onClick={() => toggleCategory(activeCategory)}
+                className="inline-flex items-center gap-3 bg-gradient-to-r from-[#26194f] to-[#8e24aa] text-white px-8 py-4 rounded-full font-semibold hover:scale-105 transition-all duration-300 cursor-pointer shadow-lg"
+              >
+                <i className={`${expandedCategories.includes(activeCategory) ? 'ri-arrow-up-line' : 'ri-arrow-down-line'} text-xl`}></i>
+                <span>
+                  {expandedCategories.includes(activeCategory) 
+                    ? 'Show Less' 
+                    : `Load More Photos (${filteredImages.length - displayImages.length} more)`}
+                </span>
+              </button>
+            </div>
+          )}
+
           {/* Empty State */}
           {filteredImages.length === 0 && (
             <div className="text-center py-20">
@@ -247,7 +376,7 @@ const GalleryPage = () => {
           {/* Results Count */}
           <div className="text-center mt-12">
             <p className="text-gray-600 text-lg">
-              Showing <strong className="text-[#26194f]">{filteredImages.length}</strong> {filteredImages.length === 1 ? 'photo' : 'photos'}
+              Showing <strong className="text-[#26194f]">{displayImages.length}</strong> of <strong className="text-[#26194f]">{filteredImages.length}</strong> {filteredImages.length === 1 ? 'photo' : 'photos'}
               {activeCategory !== 'all' && (
                 <span> in <strong className="text-[#8e24aa]">{categories.find(c => c.id === activeCategory)?.name}</strong></span>
               )}
@@ -255,6 +384,85 @@ const GalleryPage = () => {
           </div>
         </div>
       </section>
+
+      {/* Lightbox Modal */}
+      {lightboxOpen && (
+        <div 
+          className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center"
+          onClick={closeLightbox}
+          onKeyDown={handleKeyPress}
+          tabIndex={0}
+        >
+          {/* Close Button */}
+          <button
+            onClick={closeLightbox}
+            className="absolute top-6 right-6 w-12 h-12 flex items-center justify-center bg-white/10 hover:bg-white/20 rounded-full transition-all duration-300 cursor-pointer z-50"
+          >
+            <i className="ri-close-line text-white text-2xl"></i>
+          </button>
+
+          {/* Previous Button */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              previousImage();
+            }}
+            className="absolute left-6 top-1/2 -translate-y-1/2 w-14 h-14 flex items-center justify-center bg-white/10 hover:bg-white/20 rounded-full transition-all duration-300 cursor-pointer z-50"
+          >
+            <i className="ri-arrow-left-line text-white text-3xl"></i>
+          </button>
+
+          {/* Next Button */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              nextImage();
+            }}
+            className="absolute right-6 top-1/2 -translate-y-1/2 w-14 h-14 flex items-center justify-center bg-white/10 hover:bg-white/20 rounded-full transition-all duration-300 cursor-pointer z-50"
+          >
+            <i className="ri-arrow-right-line text-white text-3xl"></i>
+          </button>
+
+          {/* Image Container */}
+          <div 
+            className="relative max-w-7xl max-h-[90vh] w-full px-20"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={filteredImages[currentImageIndex].url}
+              alt={filteredImages[currentImageIndex].title}
+              className="w-full h-full object-contain max-h-[80vh] rounded-lg"
+            />
+            
+            {/* Image Info */}
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 rounded-b-lg">
+              <h3 className="text-white text-2xl font-bold mb-2">
+                {filteredImages[currentImageIndex].title}
+              </h3>
+              <p className="text-white/80 text-sm">
+                Photo {currentImageIndex + 1} of {filteredImages.length}
+              </p>
+            </div>
+          </div>
+
+          {/* Navigation Hint */}
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-4 text-white/60 text-sm">
+            <span className="flex items-center gap-2">
+              <i className="ri-arrow-left-line"></i>
+              <span>Previous</span>
+            </span>
+            <span className="w-px h-4 bg-white/30"></span>
+            <span className="flex items-center gap-2">
+              <span>Next</span>
+              <i className="ri-arrow-right-line"></i>
+            </span>
+            <span className="w-px h-4 bg-white/30"></span>
+            <span className="flex items-center gap-2">
+              <span>Press ESC to close</span>
+            </span>
+          </div>
+        </div>
+      )}
 
       {/* Add New Photos CTA */}
       <section className="py-16 bg-gradient-to-br from-[#26194f] to-[#8e24aa]">
