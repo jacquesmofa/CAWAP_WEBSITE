@@ -1,26 +1,35 @@
-name: Deploy React App to GitHub Pages
+name: Deploy CAWAP to HostGator
+
 on:
   push:
     branches:
-      - master # Using 'master' as confirmed by your previous logs
+      - main  # This matches your actual branch name
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    
     steps:
-      - name: Checkout 🛎️
+      - name: 🚚 Get latest code
         uses: actions/checkout@v4
 
-      - name: Install and Build 
+      - name: 🛠️ Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: 🔨 Install and Build
         run: |
           npm install
           npm run build
-          # CRITICAL FIX LINE ADDED: Copies 404.html from root to the 'out' folder
-          cp 404.html out/ 
 
-      - name: Deploy to GitHub Pages 🚀
-        uses: peaceiris/actions-gh-pages@v4
+      - name: 📂 Sync to HostGator via FTP
+        uses: SamKirkland/FTP-Deploy-Action@4.3.5
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./out 
-          publish_branch: gh-pages
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./out/
+          server-dir: ./
+          dangerous-clean-slate: false
