@@ -3,7 +3,7 @@ name: Deploy CAWAP to HostGator
 on:
   push:
     branches:
-      - main  # Make sure your branch is named 'main' (or change to 'master' if needed)
+      - main  # This now matches your branch name perfectly
 
 jobs:
   build-and-deploy:
@@ -20,7 +20,6 @@ jobs:
           cache: 'npm'
 
       - name: 🔨 Install and Build
-        # This builds your Readdy.ai files into the 'out' folder
         run: |
           npm install
           npm run build
@@ -32,7 +31,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./out/
-          # We use './' because the FTP account 'cawap@cawap.ca' 
-          # is already pointed directly at the 'cawap.ca' folder.
+          # Using './' because the cawap@cawap.ca account 
+          # is already locked to the cawap.ca folder.
           server-dir: ./
           dangerous-clean-slate: false
